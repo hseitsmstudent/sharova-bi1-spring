@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home Page</title>
 </head>
 <body>
-    <p>Hello world!</p>
+<ul>
+    <li th:each="p:${people}"> <p th:text="${p.firstName}">10</p> </li>
+
+</ul>
+
+
 </body>
 </html>

@@ -1,18 +1,24 @@
 package com.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * Created by student on 4/6/17.
  */
-@Configuration
+@Controller
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry){
-        registry.addViewController("/home").setViewName("home");
-        registry.addViewController("/").setViewName("home");
+    @Autowired
+    PersonRepository personRepository;
+
+    @RequestMapping("/")
+    public ModelAndView peopleList() {
+        return new ModelAndView("home", "people", personRepository.findAll());
     }
 }
