@@ -1,5 +1,6 @@
 package com.example;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
@@ -21,4 +22,14 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public ModelAndView peopleList() {
         return new ModelAndView("home", "people", personRepository.findAll());
     }
+
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/home").setViewName("home");
+        registry.addViewController("/").setViewName("home");
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/hello").setViewName("hello");
+    }
+
 }

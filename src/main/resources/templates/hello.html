@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Hello</title>
+</head>
+<body>
+
+<div class="page-header">
+    <h1>Здесь будет перечень людей</h1>
+</div>
+<ul>
+    <li th:each="p:${people}"> <p th:text="${p.firstName}">10</p> </li>
+</ul>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
