@@ -38,6 +38,15 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/hello").setViewName("hello");
     }
 
+    @Configuration
+    public class DatabaseConfig {
+        @Bean
+        @Primary
+        @ConfigurationProperties(prefix = "spring.datasource")
+        public DataSource dataSource() {
+            return DataSourceBuilder.create().build();
+        }
+    }
 
 
 }
